@@ -19,6 +19,7 @@ Router.map(function() {
   this.route('demo', { path: 'components' }, function() {
     this.route('autocomplete');
     this.route('button');
+    this.route('calendar');
     this.route('card');
     this.route('checkbox');
     this.route('chips');

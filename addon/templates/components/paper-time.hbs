@@ -1,0 +1,37 @@
+<div class="layout-row layout-align-center-center">
+<div class="layout-column">
+  {{#paper-button data-test-hour-incrementer=true onClick=(action 'setHour' 1) iconButton=true disabled=(eq hour 23)}}
+    {{paper-icon "keyboard-arrow-up"}}
+  {{/paper-button}}
+
+  <span data-test-hour style="text-align: center;">{{displayHour}}</span>
+
+  {{#paper-button data-test-hour-decrementer=true onClick=(action 'setHour' -1) iconButton=true disabled=(eq hour 0)}}
+    {{paper-icon "keyboard-arrow-down"}}
+  {{/paper-button}}
+</div>
+
+<div class="layout-column">
+  {{#paper-button data-test-minute-incrementer=true onClick=(action 'setMinute' 1) iconButton=true disabled=(eq minute 59)}}
+    {{paper-icon "keyboard-arrow-up"}}
+  {{/paper-button}}
+
+  <span data-test-minute style="text-align: center;">{{displayMinute}}</span>
+
+  {{#paper-button data-test-minute-decrementer=true onClick=(action 'setMinute' -1) iconButton=true disabled=(eq minute 0)}}
+    {{paper-icon "keyboard-arrow-down"}}
+  {{/paper-button}}
+</div>
+
+<div class="layout-column">
+  {{#paper-button data-test-meridiem-toggle=true onClick=(action 'cycleMeridiem') iconButton=true}}
+    {{paper-icon "keyboard-arrow-up"}}
+  {{/paper-button}}
+
+  <span data-test-meridiem style="text-align: center;">{{meridiem}}</span>
+
+  {{#paper-button data-test-meridiem-toggle=true onClick=(action 'cycleMeridiem') iconButton=true}}
+    {{paper-icon "keyboard-arrow-down"}}
+  {{/paper-button}}
+</div>
+</div>
