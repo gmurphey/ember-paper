@@ -1,0 +1,37 @@
+{{#if hasBlock}}
+  {{yield (hash
+    input=(component 'paper-input'
+      label="Start Time"
+      value=(moment-format datetime 'YYYY-MM-DD HH:mm')
+      onChange=null)
+    calendar=(component calendarComponent
+      selected=datetime
+      onSelect=(action 'selectDate')
+      center=center
+      onCenterChange=(action (mut center) value="moment"))
+    clock=(component clockComponent
+      datetime=datetime
+      onChange=onChange)
+  )}}
+{{else}}
+  {{#paper-menu position="target bottom" as |dropdown|}}
+    {{#dropdown.trigger}}
+      {{paper-input label="Start time" value=(moment-format datetime 'YYYY-MM-DD HH:mm') onChange=null}}
+    {{/dropdown.trigger}}
+
+    {{#dropdown.content}}
+      <div class="layout-row">
+        {{#paper-calendar
+          selected=datetime
+          onSelect=(action 'selectDate')
+          center=center
+          onCenterChange=(action (mut center) value="moment")
+        as |calendar|}}
+          {{calendar.nav}}
+          {{calendar.days}}
+        {{/paper-calendar}}
+        {{paper-time class="layout-row" datetime=datetime onChange=onChange}}
+      </div>
+    {{/dropdown.content}}
+  {{/paper-menu}}
+{{/if}}
