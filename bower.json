@@ -1,4 +1,6 @@
 {
   "name": "ember-paper",
-  "dependencies": {}
+  "dependencies": {
+    "ember-cli-snap-svg-shim": "^0.0.3"
+  }
 }

@@ -1,0 +1,183 @@
+.paper-datetime-picker-header {
+  background-color: color($primary);
+  color: color($primary, 'contrast');
+  padding: $layout-gutter-width;
+
+  .date {
+    @include md-title;
+    font-size: $headline-font-size-base;
+  }
+
+  .year {
+    @include md-subhead;
+  }
+}
+
+.ember-power-calendar-nav {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: $layout-gutter-width / 2;
+}
+
+.ember-power-calendar-days {
+  padding: $layout-gutter-width;
+  font-size: $caption-font-size-base;
+
+  .ember-power-calendar-row {
+    > * {
+      float: left;
+      width: 40px;
+    }
+  }
+
+  .ember-power-calendar-weekday {
+    text-align: center;
+  }
+
+  .ember-power-calendar-day {
+    padding: 0;
+    background-color: transparent;
+    border: none;
+    height: 40px;
+
+    &.ember-power-calendar-day--today {
+      color: color($accent);
+    }
+
+    &.ember-power-calendar-day--selected {
+      background-color: color($accent);
+      border-radius: 50%;
+      color: color($accent, 'contrast');
+    },
+
+    &.ember-power-calendar-day--focused {
+      outline: none;
+    }
+  }
+
+  @for $i from 0 through 6 {
+    .ember-power-calendar-week:first-child[data-missing-days="#{$i}"] {
+      .ember-power-calendar-day:first-child {
+        margin-left: ($i * 40px);
+      }
+    }
+  }
+}
+
+$ept-width: 330px;
+$clock-font: ($ept-width * .0522);
+$clock-font-small: ($ept-width * .0478);
+$clock-hand-stroke: ($ept-width * .0087);
+
+.paper-time-picker {
+  position: relative;
+  width: 300px;
+  height: 300px;
+
+  > .hours, .minutes {
+    width: 100%;
+    height: 100%;
+    box-sixing: border-box;
+  }
+
+    h1 {
+      color: #2e3e4f;
+      font-size: 16px;
+      text-align: center;
+    }
+
+    svg {
+      pointer-events: none;
+
+      circle.clock-face {
+        fill: color($foreground-dark, '4');
+      }
+
+      circle.clock-face-tick {
+        fill: color($foreground-dark, '4');
+      }
+
+      text.clock-face-tick-text {
+        font-size: $clock-font-small;
+        line-height: 1;
+      }
+
+      & > path {
+        &.disabled {
+          pointer-events: none;
+        }
+      }
+
+      & > text {
+        &.disabled {
+          pointer-events: none;
+          fill: color($primary);
+        }
+      }
+
+      & > g {
+        & > text {
+          &.interior-white {
+            fill: color($primary) !important;
+          }
+
+          &.disabled {
+            pointer-events: none;
+            fill: color($primary);
+          }
+        }
+      }
+    }
+}
+
+.hours {
+  & > .clock-container {
+    & > .header {
+      & > .numbers-container {
+        & > .number {
+          &.hours {
+            //color: #42ace1;
+            color: color($primary);
+          }
+        }
+      }
+    }
+
+    & > .outside-container {
+      &.hours {
+        display: block;
+
+        & > svg {
+          pointer-events: all;
+        }
+      }
+    }
+  }
+}
+
+.minutes {
+  & > .clock-container {
+    & > .header {
+      & > .numbers-container {
+        & > .number {
+          &.minutes {
+            //color: #42ace1;
+            color: color($primary);
+          }
+        }
+      }
+    }
+
+    & > .outside-container {
+      &.minutes {
+        display: block;
+
+        & > svg {
+          pointer-events: all;
+        }
+      }
+    }
+  }
+}
