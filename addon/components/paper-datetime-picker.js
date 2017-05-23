@@ -12,6 +12,7 @@ export default Component.extend({
   datetime: null,
   calendarComponent: 'paper-calendar',
   clockComponent: 'paper-time',
+  label: 'Timestamp',
 
   actions: {
     selectDate({ moment }) {
