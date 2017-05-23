@@ -1,7 +1,7 @@
 {{#if hasBlock}}
   {{yield (hash
     input=(component 'paper-input'
-      label="Start Time"
+      label=label
       value=(moment-format datetime 'YYYY-MM-DD HH:mm')
       onChange=null)
     calendar=(component calendarComponent
