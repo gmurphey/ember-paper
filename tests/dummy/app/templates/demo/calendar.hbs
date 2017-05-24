@@ -1,10 +1,12 @@
-{{paper-datetime-picker datetime=date onChange=(action (mut date))}}
+{{paper-datetime datetime=date onChange=(action (mut date))}}
 
-{{#paper-datetime-picker datetime=date onChange=(action (mut date)) as |picker|}}
+{{#paper-datetime datetime=date onChange=(action (mut date)) as |picker|}}
   {{picker.input}}
 
   {{#picker.calendar as |calendar|}}
     {{calendar.nav}}
     {{calendar.days minDate=minDatetime maxDate=maxDatetime}}
   {{/picker.calendar}}
-{{/paper-datetime-picker}}
+{{/paper-datetime}}
+
+{{paper-datetime-input value=date onChange=(action (mut date))}}
