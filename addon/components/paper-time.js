@@ -3,6 +3,7 @@ import layout from '../templates/components/paper-time';
 
 const {
   get,
+  set,
   computed,
   Component
 } = Ember;
@@ -11,26 +12,45 @@ export default Component.extend({
   layout,
 
   datetime: null,
+  use24Hour: false,
 
   hour: computed('datetime', function() {
-    return get(this, 'datetime').hour();
+    let datetime = get(this, 'datetime');
+
+    return (datetime) ? datetime.hour() : null;
   }),
 
-  displayHour: computed('hour', function() {
+  displayHour: computed('hour', 'use24Hour', function() {
     let hour = get(this, 'hour');
-    let displayHour = hour % 12;
+    let use24Hour = get(this, 'use24Hour');
 
-    displayHour = (displayHour > 0) ? displayHour : 12;
+    if (!hour) {
+      hour = 12;
+    }
 
-    return (displayHour < 10) ? `0${displayHour}` : displayHour;
+    if (use24Hour) {
+      return hour;
+    } else {
+      let displayHour = hour % 12;
+
+      displayHour = (displayHour > 0) ? displayHour : 12;
+
+      return (displayHour < 10) ? `0${displayHour}` : displayHour;
+    }
   }),
 
   minute: computed('datetime', function() {
-    return get(this, 'datetime').minute();
+    let datetime = get(this, 'datetime');
+
+    return (datetime) ? datetime.minute() : null;
   }),
 
   displayMinute: computed('minute', function() {
     let minute = get(this, 'minute');
+
+    if (!minute) {
+      minute = 0;
+    }
 
     return (minute < 10) ? `0${minute}` : minute;
   }),
@@ -38,6 +58,18 @@ export default Component.extend({
   meridiem: computed('hour', function() {
     return (get(this, 'hour') < 12) ? 'AM' : 'PM';
   }),
+
+  hours: computed(function() {
+    let hours = [];
+
+    for (let i = 1; i <= 12; i++) {
+      hours.push(i);
+    }
+
+    return hours;
+  }),
+
+  minutes: ['0', '15', '30', '45'],
 
   actions: {
     setHour(direction) {
@@ -64,6 +96,34 @@ export default Component.extend({
       let method = (currentMeridiem === 'AM') ? 'add' : 'subtract';
 
       datetime[method](12, 'hours');
+
+      get(this, 'onChange')(datetime);
+    },
+
+    showHours() {
+      set(this, 'showHours', true);
+    },
+
+    showMinutes() {
+      set(this, 'showMinutes', true);
+    },
+
+    selectHour(hour) {
+      set(this, 'showHours', false);
+
+      let datetime = get(this, 'datetime').clone();
+
+      datetime.hour(hour);
+
+      get(this, 'onChange')(datetime);
+    },
+
+    selectMinute(minute) {
+      set(this, 'showMinutes', false);
+
+      let datetime = get(this, 'datetime').clone();
+
+      datetime.minute(minute);
 
       get(this, 'onChange')(datetime);
     }

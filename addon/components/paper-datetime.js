@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import layout from '../templates/components/paper-datetime-picker';
+import layout from '../templates/components/paper-datetime';
 
 const {
   Component,
@@ -9,10 +9,9 @@ const {
 export default Component.extend({
   layout,
 
-  datetime: null,
-  calendarComponent: 'paper-calendar',
+  calendarComponent: 'paper-date',
   clockComponent: 'paper-time',
-  label: 'Timestamp',
+  datetime: null,
 
   actions: {
     selectDate({ moment }) {
