@@ -1,6 +1,6 @@
   {{#paper-menu position=position as |dropdown|}}
     {{#dropdown.trigger}}
-      {{paper-input placeholder=placeholder label=label value=(if datetime (moment-format datetime format)) onChange=null}}
+      {{paper-input placeholder=placeholder label=label placeholder=placeholder value=(if datetime (moment-format datetime format)) onChange=null}}
     {{/dropdown.trigger}}
 
     {{#dropdown.content}}
