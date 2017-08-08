@@ -11,7 +11,6 @@ export default Component.extend({
   layout,
 
   date: computed.alias('value'),
-  label: 'Date',
   format: 'L',
 
   actions: {
