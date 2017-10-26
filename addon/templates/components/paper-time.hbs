@@ -4,7 +4,7 @@
       {{paper-icon "keyboard-arrow-up"}}
     {{/paper-button}}
 
-    {{#paper-button data-test-hour=true iconButton=true onClick=(action 'showHours')}}
+    {{#paper-button data-test-hour=true iconButton=true primary=true onClick=(action 'showHours')}}
       {{displayHour}}
     {{/paper-button}}
 
@@ -18,7 +18,7 @@
       {{paper-icon "keyboard-arrow-up"}}
     {{/paper-button}}
 
-    {{#paper-button data-test-minute=true iconButton=true onClick=(action 'showMinutes')}}
+    {{#paper-button data-test-minute=true iconButton=true primary=true onClick=(action 'showMinutes')}}
       {{displayMinute}}
     {{/paper-button}}
 
@@ -29,7 +29,7 @@
 
   {{#unless use24Hour}}
     <div class="layout-column">
-      {{#paper-button data-test-meridiem=true iconButton=true onClick=(action 'cycleMeridiem')}}
+      {{#paper-button data-test-meridiem=true iconButton=true primary=true onClick=(action 'cycleMeridiem')}}
         {{meridiem}}
       {{/paper-button}}
     </div>
