@@ -12,6 +12,7 @@ export default Component.extend({
 
   date: computed.alias('value'),
   format: 'L',
+  position: 'target bottom',
 
   actions: {
     selectDate({ moment }) {
