@@ -50,7 +50,7 @@
       background-color: color($accent);
       border-radius: 50%;
       color: color($accent, 'contrast');
-    },
+    }
 
     &.ember-power-calendar-day--focused {
       outline: none;
