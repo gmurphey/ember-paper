@@ -47,15 +47,9 @@
     "ember-export-application-global": "^2.0.0",
     "ember-href-to": "^1.13.0",
     "ember-load-initializers": "^1.0.0",
-<<<<<<< HEAD
     "ember-native-dom-helpers": "^0.5.4",
     "ember-resolver": "^4.3.0",
     "ember-source": "~2.18.0",
-=======
-    "ember-native-dom-helpers": "^0.5.2",
-    "ember-resolver": "^4.0.0",
-    "ember-source": "~2.13.3",
->>>>>>> WIP datetime-picker.
     "ember-transition-helper": "0.0.6",
     "eslint-plugin-ember": "^5.0.0",
     "eslint-plugin-ember-suave": "^1.0.0",
